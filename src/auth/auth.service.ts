@@ -6,10 +6,10 @@ import { User } from './schemas/user.schemas';
 import * as bcrypt from 'bcrypt';
 @Injectable()
 export class AuthService {
-  constructor(@InjectModel(User.name) private usrModel: Model<User>) {}
+  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
   async login(loginDto: LoginDto) {
-    const user = await this.usrModel.findOne({
+    const user = await this.userModel.findOne({
       username: loginDto.username,
     });
 
@@ -28,7 +28,7 @@ export class AuthService {
 
   async register(loginDto: LoginDto) {
     const { password, username } = loginDto;
-    const user = await this.usrModel.findOne({
+    const user = await this.userModel.findOne({
       username: loginDto.username,
     });
 
@@ -39,7 +39,7 @@ export class AuthService {
     const saltOrRounds = 10;
     const hash = await bcrypt.hash(password, saltOrRounds);
 
-    await this.usrModel.create({
+    await this.userModel.create({
       username,
       password: hash,
     });
