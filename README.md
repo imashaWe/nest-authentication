@@ -32,6 +32,12 @@
 $ yarn install
 ```
 
+## Start Mongodb
+
+```bash
+$ docker-compose up
+```
+
 ## Running the app
 
 ```bash
@@ -56,6 +62,19 @@ $ yarn run test:e2e
 
 # test coverage
 $ yarn run test:cov
+```
+
+## Migration
+
+```bash
+# create migrate
+$ yarn migrate:create <name>
+
+# migrate up
+$ yarn migrate:up
+
+# migrate down
+$ yarn migrate:down
 ```
 
 ## Support
